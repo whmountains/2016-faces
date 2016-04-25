@@ -1,11 +1,5 @@
 "use strict";
 
-// shortcut to avoid having to do a double promise
-// just to get the json from a fetch
-let getJSON = function(res) {
-  return res.json()
-}
-
 // add the 'loaded' class to a grid image
 let mkVisible = function(node) {
   node.classList.add('loaded')
@@ -27,9 +21,8 @@ let processQueue = function() {
 setInterval(processQueue, 50)
 
 
-// start by fetching the images list
-fetch('gallery.json')
-.then(getJSON)
+// hook into already in progress gallery fetch
+galleryFetch
 .then(({cfg, images}) => {
 
   let grid = document.querySelector('.grid')

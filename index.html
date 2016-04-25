@@ -1,19 +1,30 @@
 <html>
 <head>
 
+  <!-- no flashing white backgrounds -->
+  <style>body{background-color: #262524;}</style>
+
   <title>imgrid</title>
 
-  <link href="src/normalize.css" rel="stylesheet">
-  <link href="src/photoswipe.css" rel="stylesheet">
-  <link href="src/pswp-skin.css" rel="stylesheet">
-  <link href="src/styles.css" rel="stylesheet">
-
-  <link href="gallery.json" rel="preload" />
-  <link href="gallery.json" rel="prefetch" />
-  <link href="gallery.json" rel="subresource" />
+  <!-- prefetch gallery.json -->
+  <script>var galleryFetch = fetch('gallery.json').then(r => r.json())</script>
+  <!-- main javascript -->
+  <script src="src/main.js"></script>
 
 </head>
 <body>
+
+  <!-- minimum required content to start displaying images -->
+  <link href="src/styles.css" rel="stylesheet">
+  <div class="grid">
+  </div>
+
+  <!-- photoswipe stuff -->
+  <!-- In new browsers the photoswipe js/css won't block grid rendering -->
+  <!-- <script src="photoswipe.js" async></script>
+  <script src="pswp-ui.js" async></script> -->
+  <link href="src/photoswipe.css" rel="stylesheet"><script> </script>
+  <link href="src/pswp-skin.css" rel="stylesheet"><script> </script>
 
   <!-- Root element of PhotoSwipe. Must have class pswp. -->
   <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -82,11 +93,5 @@
 
   </div>
 
-<div class="grid">
-</div>
-
-<!-- <script src="photoswipe.js" async></script>
-<script src="pswp-ui.js" async></script> -->
-<script src="src/main.js" async></script>
 </body>
 </html>
